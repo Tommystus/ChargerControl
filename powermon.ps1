@@ -24,7 +24,8 @@ if ($batt.EstimatedChargeRemaining -lt '100') {
 		}
 	}
 } else {
-	'EstimatedChargeRemaining: 100%'
+	'EstimatedChargeRemaining: 100%; Turning off charger...'
+	$rv = Invoke-WebRequest -Uri "http://$switchIP/control?cmd=GPIO,12,0"
 }
 
 
